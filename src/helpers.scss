@@ -1,10 +1,10 @@
-@import '~bootstrap/dist/css/bootstrap';
+@import "~bootstrap/dist/css/bootstrap";
 
 $react-color-1: #190933;
 $react-color-2: #665687;
-$react-color-3: #B084CC;
-$react-color-4: #ACFCD9;
-$react-color-5: #5DD9C1;
+$react-color-3: #b084cc;
+$react-color-4: #acfcd9;
+$react-color-5: #5dd9c1;
 
 body {
     // background-color: $react-color-3;
@@ -30,6 +30,14 @@ body {
     margin-bottom: 0 !important;
 }
 
+.m-b-5 {
+    margin-bottom: 5px !important;
+}
+
+.m-b-10 {
+    margin-bottom: 10px !important;
+}
+
 .m-l-0 {
     margin-left: 0 !important;
 }
@@ -37,15 +45,6 @@ body {
 .m-l-5 {
     margin-left: 5px !important;
 }
-
-
-
-
-
-
-
-
-
 
 // Paddings
 
