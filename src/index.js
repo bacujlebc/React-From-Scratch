@@ -1,7 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import { createStore, applyMiddleware } from "redux";
+import { logger } from "redux-logger";
 
-import App from './components/App';
-import './helpers.scss';
+import rootReducer from "./reducers/index";
+import App from "./components/App";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+const store = createStore(rootReducer, applyMiddleware(logger));
+
+const Component = () => (
+    <Provider store={store}>
+        <App />
+    </Provider>
+);
+
+ReactDOM.render(<Component />, document.getElementById("root"));
