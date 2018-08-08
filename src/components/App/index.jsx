@@ -7,9 +7,13 @@ import UserSuggestionList from "../../containers/UserSuggestionList";
 export default class App extends Component {
     render() {
         return (
-            <div className={classnames(`container m-t-20`)}>
-                <UserSuggestionList />
-            </div>
+            <React.Fragment>
+                <header />
+                <div className={classnames(`container m-t-20`)}>
+                    <UserSuggestionList />
+                </div>
+                <footer />
+            </React.Fragment>
         );
     }
 }

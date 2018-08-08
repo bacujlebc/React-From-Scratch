@@ -7,15 +7,13 @@ export default class UserSuggestionInput extends PureComponent {
         super(props);
     }
 
-    handleChange = () => {};
-
     render() {
-        const { originalText } = this.props;
+        const { originalText, handleChange } = this.props;
         return (
             <textarea
                 className={classnames(`form-control`)}
                 value={originalText}
-                onChange={this.handleChange}
+                onChange={e => handleChange(e.target.value)}
             />
         );
     }

@@ -6,10 +6,12 @@ import "../../helpers.scss";
 import "./styles.scss";
 import UserSuggestionInput from "./UserSuggestionInput";
 
-export const UserSuggestion = props => {
+export default function UserSuggestion(props) {
     return (
         <div className={classnames(`card m-b-10`)}>
             <div className={classnames(`card-body`)}>
+
+
                 <div className="d-flex align-items-center justify-content-between">
                     <h6 className={classnames(`card-title mb-2 text-muted`)}>
                         Original text
