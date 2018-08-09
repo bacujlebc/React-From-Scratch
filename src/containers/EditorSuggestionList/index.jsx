@@ -2,17 +2,16 @@ import React, { Component } from "react";
 import classnames from "classnames";
 import { connect } from "react-redux";
 
-import UserSuggestion from "../../components/UserSuggestion";
 import { fetchArticles } from "../../api/article-service";
 import "./styles.scss";
+import EditorSuggestion from "../../components/EditorSuggestion";
 
-class UserSuggestionList extends Component {
+class EditorSuggestionList extends Component {
     componentDidMount() {
         this.props.articleList.length <= 0 && this.props.getArticles();
     }
 
     render() {
-        const path = this.props.match.path && this.props.match.path.slice(1);
         const { articleList } = this.props || [];
         return (
             <div
@@ -22,7 +21,7 @@ class UserSuggestionList extends Component {
             >
                 {articleList.length > 0 &&
                     articleList.map(el => (
-                        <UserSuggestion {...el} key={el.id} currPage={path} />
+                        <EditorSuggestion {...el} key={el.id} />
                     ))}
             </div>
         );
@@ -47,4 +46,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(UserSuggestionList);
+)(EditorSuggestionList);

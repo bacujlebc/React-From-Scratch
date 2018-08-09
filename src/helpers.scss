@@ -1,13 +1,7 @@
 @import "~bootstrap/dist/css/bootstrap";
 
-$react-color-1: #190933;
-$react-color-2: #665687;
-$react-color-3: #b084cc;
-$react-color-4: #acfcd9;
-$react-color-5: #5dd9c1;
-
 body {
-    // background-color: $react-color-3;
+    background-color: #f2edf3;
 }
 
 .m-t-20 {
@@ -24,6 +18,14 @@ body {
 
 .m-r-0 {
     margin-right: 0 !important;
+}
+
+.m-r-5 {
+    margin-right: 5px !important;
+}
+
+.m-r-10 {
+    margin-right: 10px !important;
 }
 
 .m-b-0 {
