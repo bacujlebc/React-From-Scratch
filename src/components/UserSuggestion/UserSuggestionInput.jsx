@@ -3,27 +3,18 @@ import classnames from "classnames";
 import "./styles.scss";
 
 export default class UserSuggestionInput extends PureComponent {
-    handleChange = e => {
-        this.props.onSuggestionValueChange(e.target.value);
-    };
+    constructor(props) {
+        super(props);
+    }
 
     render() {
+        const { originalText, handleChange } = this.props;
         return (
-            <React.Fragment>
-                {this.props.isTextArea ? (
-                    <textarea
-                        className={classnames(`form-control`)}
-                        value={this.props.inputValue}
-                        onChange={this.handleChange}
-                    />
-                ) : (
-                    <input
-                        className={classnames(`form-control editor-input`)}
-                        value={this.props.inputValue}
-                        onChange={this.handleChange}
-                    />
-                )}
-            </React.Fragment>
+            <textarea
+                className={classnames(`form-control`)}
+                value={originalText}
+                onChange={e => handleChange(e.target.value)}
+            />
         );
     }
 }

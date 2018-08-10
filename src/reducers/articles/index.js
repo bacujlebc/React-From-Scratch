@@ -1,51 +1,31 @@
-import { GET_ARTICLES, SEND_ARTICLE_SUGGESTION } from "./constrants";
+import {
+    GET_ARTICLES,
+    ADD_ARTICLE,
+    DELETE_ARTICLE
+} from "../../actions/articles";
 
-export default function articlesReducer(state = [], action) {
+import { articleData } from "../../data/article-json";
+
+export const articles = (state = [], action) => {
     switch (action.type) {
         case GET_ARTICLES:
-            return [...state, ...action.payload];
-        case SEND_ARTICLE_SUGGESTION:
-            return state.map(el => {
-                if (el.id !== action.payload.id) {
-                    return el;
+            return [...state, ...articleData];
+        case ADD_ARTICLE:
+            return [
+                ...state,
+                {
+                    id:
+                        state.length > 0
+                            ? Math.max(...state.map(el => el.id)) + 1
+                            : 1,
+                    originalText: "Test article.",
+                    suggestions: [],
+                    isApproved: false
                 }
-
-                return {
-                    ...el,
-                    suggestions: [...el.suggestions, action.payload.text]
-                };
-            });
+            ];
+        case DELETE_ARTICLE:
+            return state.slice(0, action.id).concat(state.slice(action.id + 1));
         default:
             return state;
     }
-}
-
-// import { GET_ARTICLES, SEND_ARTICLE_SUGGESTION } from "./constrants";
-// import articleReducer from "../article/index";
-
-// export default function articlesReducer(state = [], action) {
-//     switch (action.type) {
-//         case GET_ARTICLES:
-//             // return [...state, ...action.payload];
-//             return [
-//                 ...state,
-//                 ...action.payload.map(el =>
-//                     articleReducer(undefined, { ...el, type: "FETCH_ARTICLE" })
-//                 )
-//             ];
-//         case SEND_ARTICLE_SUGGESTION:
-//             return state.map(el => {
-//                 if (el.id !== action.payload.id) {
-//                     return el;
-//                 }
-
-//                 const buff = Object.assign({}, el);
-
-//                 return Object.assign({}, el, {
-//                     suggestions: buff.suggestions.push(action.payload.text)
-//                 });
-//             });
-//         default:
-//             return state;
-//     }
-// }
+};

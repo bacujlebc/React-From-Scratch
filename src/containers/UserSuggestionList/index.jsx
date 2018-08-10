@@ -3,44 +3,83 @@ import classnames from "classnames";
 import { connect } from "react-redux";
 
 import UserSuggestion from "../../components/UserSuggestion";
-import { fetchArticles } from "../../api/article-service";
 import "./styles.scss";
 
+import { getArticles, addArticle, deleteArticle } from "../../actions/articles";
+
 class UserSuggestionList extends Component {
-    componentDidMount() {
-        this.props.articleList.length <= 0 && this.props.getArticles();
+    constructor(props) {
+        super(props);
+        this.state = {
+            articleList: []
+        };
     }
 
+    componentDidMount() {
+        this.props.fetchArticles();
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            articleList: [...nextProps.state.articles]
+        });
+    }
+
+    onHandleChange = (id, data) => {
+        const stateClone = Object.assign({}, this.state);
+        stateClone[id] = data;
+        this.setState(stateClone);
+    };
+
     render() {
-        const path = this.props.match.path && this.props.match.path.slice(1);
         const { articleList } = this.props || [];
         return (
             <div
                 className={classnames(
-                    `d-flex flex-column justify-content-center`
+                    "d-flex flex-column justify-content-center"
                 )}
             >
                 {articleList.length > 0 &&
-                    articleList.map(el => (
-                        <UserSuggestion {...el} key={el.id} currPage={path} />
+                    articleList.map((el, i) => (
+                        <UserSuggestion
+                            originalText={this.state[el.id] || el.originalText}
+                            key={el.id}
+                            removeHandler={_ => this.props.deleteArticle(i)}
+                            approveNewTitle={e => console.log(title)}
+                            handleChange={data =>
+                                this.onHandleChange(el.id, data)
+                            }
+                        />
                     ))}
+
+                <div className="">
+                    <button
+                        className="btn btn-success"
+                        onClick={_ => this.props.addArticle()}
+                    >
+                        Add article
+                    </button>
+                </div>
             </div>
         );
     }
 }
 
 const mapStateToProps = state => {
-    debugger;
     return {
-        articleList: state.articles
+        state
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        getArticles: () => {
-            fetchArticles()(dispatch);
-        }
+        fetchArticles: _ => dispatch(getArticles()),
+
+        addArticle: _ => dispatch(addArticle()),
+
+        deleteArticle: index => dispatch(deleteArticle(index)),
+
+        approveNewTitle: title => dispatch(approveNewTitle(title))
     };
 };
 
