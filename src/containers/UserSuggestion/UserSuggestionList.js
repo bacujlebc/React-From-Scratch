@@ -1,28 +1,13 @@
 import React, { Component } from "react";
 import classnames from "classnames";
-import { connect } from "react-redux";
 
-import UserSuggestion from "../../components/UserSuggestion";
-import "./styles.scss";
-
-import { getArticles, addArticle, deleteArticle } from "../../actions/articles";
+import UserSuggestionItem from "./UserSuggestionItem";
+import UserSuggestionListHOC from "../../HOC/UserSuggestionListHOC";
 
 class UserSuggestionList extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            articleList: []
-        };
-    }
-
-    componentDidMount() {
-        this.props.fetchArticles();
-    }
-
-    componentWillReceiveProps(nextProps) {
-        this.setState({
-            articleList: [...nextProps.state.articles]
-        });
+        this.state = {};
     }
 
     onHandleChange = (id, data) => {
@@ -32,7 +17,7 @@ class UserSuggestionList extends Component {
     };
 
     render() {
-        const { articleList } = this.props || [];
+        const { articleList } = this.props;
         return (
             <div
                 className={classnames(
@@ -41,7 +26,7 @@ class UserSuggestionList extends Component {
             >
                 {articleList.length > 0 &&
                     articleList.map((el, i) => (
-                        <UserSuggestion
+                        <UserSuggestionItem
                             originalText={this.state[el.id] || el.originalText}
                             key={el.id}
                             removeHandler={_ => this.props.deleteArticle(i)}
@@ -49,6 +34,8 @@ class UserSuggestionList extends Component {
                             handleChange={data =>
                                 this.onHandleChange(el.id, data)
                             }
+                            like={_ => this.props.like(el.id)}
+                            likes={el.likes}
                         />
                     ))}
 
@@ -65,25 +52,4 @@ class UserSuggestionList extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        state
-    };
-};
-
-const mapDispatchToProps = dispatch => {
-    return {
-        fetchArticles: _ => dispatch(getArticles()),
-
-        addArticle: _ => dispatch(addArticle()),
-
-        deleteArticle: index => dispatch(deleteArticle(index)),
-
-        approveNewTitle: title => dispatch(approveNewTitle(title))
-    };
-};
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(UserSuggestionList);
+export default UserSuggestionListHOC(UserSuggestionList);

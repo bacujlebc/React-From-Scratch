@@ -1,13 +1,14 @@
-import React, { Component, Fragment } from "react";
+import React, { Component, PureComponent } from "react";
 import classnames from "classnames";
-import { connect } from "react-redux";
+import lodash from "lodash";
 
-import UserSuggestionInput from "./UserSuggestionInput";
-import { sendArticleSuggestion } from "../../actions/articles";
 import "../../helpers.scss";
-import "./styles.scss";
+import "./UserSuggestionItem.scss";
+import UserSuggestionInput from "./UserSuggestionInput";
 
-export const UserSuggestion = props => {
+const UserSuggestionItem = props => {
+    let numberOfLikes = props.likes ? `${props.likes} likes` : null;
+
     return (
         <div className={classnames(`card m-b-10`)}>
             <div className={classnames(`card-body`)}>
@@ -24,11 +25,15 @@ export const UserSuggestion = props => {
                     </button>
                 </div>
 
+                <p className={classnames(`card-text`)}>{props.originalText}</p>
+                <h6 className={classnames(`card-title mb-2 text-muted`)}>
+                    Users version
+                </h6>
+                <UserSuggestionInput {...props} />
                 <div className="d-flex align-items-center justify-content-between">
-                    <i
-                        className="fas fa-heart"
-                        onClick={_ => console.log("asdas")}
-                    />
+                    <i className="fas fa-heart" onClick={props.like}>
+                        {numberOfLikes}
+                    </i>
 
                     <button
                         type="button"
@@ -44,3 +49,5 @@ export const UserSuggestion = props => {
         </div>
     );
 };
+
+export default UserSuggestionItem;
