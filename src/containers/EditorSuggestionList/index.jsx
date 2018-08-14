@@ -29,7 +29,6 @@ class EditorSuggestionList extends Component {
 }
 
 const mapStateToProps = state => {
-    debugger;
     return {
         articleList: state.articles
     };

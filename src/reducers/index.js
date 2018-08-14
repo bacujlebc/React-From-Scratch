@@ -1,11 +1,15 @@
 import { combineReducers } from "redux";
 import { reducer as formReducer } from "redux-form";
-import { articles } from "./articles/index";
-import { formData } from "./formData/index";
+import { routerReducer } from "react-router-redux";
+import articles from "./articles";
+import formData from "./formData";
+import auth from "./auth";
 
 const rootReducer = combineReducers({
     articles,
     formData,
-    form: formReducer
+    auth,
+    form: formReducer,
+    routing: routerReducer
 });
 export default rootReducer;

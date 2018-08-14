@@ -1,6 +1,5 @@
 import React, { Component, PureComponent } from "react";
 import classnames from "classnames";
-import "./styles.scss";
 
 export default class UserSuggestionInput extends PureComponent {
     constructor(props) {

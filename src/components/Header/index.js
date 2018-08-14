@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link, Route } from "react-router-dom";
 import Login from "../Login";
 import App from "../App";
+import Todo from "../Todo";
 
 const Header = props => {
     return (
@@ -14,9 +15,23 @@ const Header = props => {
                     <Link to="/login"> Login </Link>
                 </li>
             </ul>
-            <Route exact path="/" component={App} />
-            <Route path="/Login" component={Login} />
+            <LogOut {...props} />
         </header>
+    );
+};
+
+const LogOut = ({ loggedInAs, logout }) => {
+    return (
+        <React.Fragment>
+            {loggedInAs ? (
+                <React.Fragment>
+                    <p>{loggedInAs}</p>
+                    <button onClick={() => logout()}>logout</button>
+                </React.Fragment>
+            ) : (
+                undefined
+            )}
+        </React.Fragment>
     );
 };
 

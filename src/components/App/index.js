@@ -1,25 +1,62 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { push } from "react-router-redux";
+import { isEmpty } from "../../utils";
 
-import "./index.scss";
-import WrappComponent from "../WrappComponent";
 import UserSuggestionMain from "../../containers/UserSuggestion";
-import Modal from "../Modal";
 import TodoWrapper from "../Todo";
-import CardInputWrapper from "../CardInput";
 import Header from "../Header";
 
-export default class App extends Component {
-    render() {
-        return (
-            <React.Fragment>
-                {/* <Header /> */}
+import { logout } from "../../actions/auth";
 
-                <main className="container">
-                    <UserSuggestionMain />
+import "./index.scss";
+
+class App extends Component {
+    render() {
+        const toRender = this.props.isAuthenticated ? (
+            <React.Fragment>
+                <Header
+                    loggedInAs={this.props.loggedInAs}
+                    logout={this.props.logout}
+                />
+
+                <div className="container">
                     {/* <TodoWrapper /> */}
-                </main>
-                <footer />
+                    <UserSuggestionMain />
+                </div>
+            </React.Fragment>
+        ) : (
+            <React.Fragment>
+                <div className="not-authorized">
+                    <h3>You must log in to view this page.</h3>
+                    <button
+                        type="button"
+                        className="btn btn-warning"
+                        onClick={this.props.redirect}
+                    >
+                        Log in
+                    </button>
+                </div>
             </React.Fragment>
         );
+
+        return <React.Fragment>{toRender}</React.Fragment>;
     }
 }
+
+export default connect(
+    state => {
+        return {
+            state: state,
+            loggedInAs: state.auth.username,
+            isAuthenticated: !isEmpty(state.auth)
+        };
+    },
+
+    dispatch => {
+        return {
+            redirect: _ => dispatch(push("/login")),
+            logout: _ => dispatch(logout())
+        };
+    }
+)(App);

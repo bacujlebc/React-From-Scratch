@@ -7,7 +7,7 @@ import {
 
 import { articleData } from "../../data/article-json";
 
-export const articles = (state = [], action) => {
+const articles = (state = [], action) => {
     switch (action.type) {
         case GET_ARTICLES:
             return [...state, ...articleData];
@@ -42,3 +42,5 @@ export const articles = (state = [], action) => {
             return state;
     }
 };
+
+export default articles;

@@ -3,19 +3,14 @@ import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import { loadData } from "../../actions/formData";
 
-import "./styles.scss";
-import validate from "./validate";
-import asyncValidate from "./asyncValidate";
+import submit from "./submit";
 
-const renderField = ({
-    input,
-    label,
-    type,
-    meta: { asyncValidating, touched, error }
-}) => (
+import "./styles.scss";
+
+const renderField = ({ input, label, type, meta: { touched, error } }) => (
     <div>
         <label>{label}</label>
-        <div className={asyncValidating ? "async-validating" : ""}>
+        <div>
             <input {...input} placeholder={label} type={type} />
             {touched && error && <span>{error}</span>}
         </div>
@@ -27,7 +22,7 @@ let ContactForm = props => {
     return (
         <div className="login-page">
             <div className="form">
-                <form className="login-form" onSubmit={handleSubmit}>
+                <form className="login-form" onSubmit={handleSubmit(submit)}>
                     <Field
                         name="username"
                         type="text"
@@ -56,11 +51,8 @@ let ContactForm = props => {
 };
 
 ContactForm = reduxForm({
-    form: "contactForm",
+    form: "contactForm"
     // enableReinitialize: true
-    validate,
-    asyncValidate,
-    asyncBlurFields: ["username"]
 })(ContactForm);
 
 // ContactForm = connect(

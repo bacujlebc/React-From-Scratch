@@ -15,12 +15,10 @@ const data = {
 const colors = ["Red", "Orange", "Yellow", "Green", "Blue", "Indigo", "Violet"];
 
 class WrappComponent extends React.Component {
-    submitForm = _ => alert("Success");
-
     render() {
         return (
             <ContactForm
-                onSubmit={this.submitForm}
+                // onSubmit={this.submitForm}
                 colors={colors}
                 data={data}
             />

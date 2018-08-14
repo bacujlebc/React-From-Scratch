@@ -7,8 +7,6 @@ import "./UserSuggestionItem.scss";
 import UserSuggestionInput from "./UserSuggestionInput";
 
 const UserSuggestionItem = props => {
-    console.log(props);
-    debugger;
     let numberOfLikes = props.likes ? `${props.likes} likes` : null;
     const { removeHandler, likeArticle, originalText, element } = props;
 
