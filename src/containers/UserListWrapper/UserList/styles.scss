@@ -1,0 +1,17 @@
+ul.user-list {
+    list-style: none;
+    padding: 40px;
+
+    display: flex;
+    flex-direction: column;
+
+    box-sizing: border-box;
+    border: 0.5px solid ghostwhite;
+    background-color: #fff;
+
+    border-radius: 10px;
+
+    text-transform: capitalize;
+    font-family: "ubuntu-medium", sans-serif;
+    font-size: 1.125rem;
+}

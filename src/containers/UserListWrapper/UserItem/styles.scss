@@ -1,0 +1,13 @@
+li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    padding: 10px 0;
+    border-top: 1px solid #ebedf2;
+
+    vertical-align: middle;
+
+    font-size: 0.875rem;
+    line-height: 1;
+}

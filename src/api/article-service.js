@@ -1,9 +1,12 @@
+import { getArticles } from "../actions/articles";
 import { articles } from "../data/article-json";
 
-export const fetchArticleList = _ => {
-    return new Promise((resolve, reject) => {
-        resolve(articles);
-    });
+export const fetchArticles = _ => {
+    return dispatch => {
+        return new Promise((resolve, reject) => {
+            dispatch(getArticles(articles));
+        });
+    };
 };
 
 export const fetchArticleById = articleId => {
