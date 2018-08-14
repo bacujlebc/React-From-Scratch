@@ -1,23 +1,23 @@
 import React, { Component } from "react";
-import classnames from "classnames";
-import "./index.scss";
-import "../../helpers.scss";
-import ContactForm from "../common/ContactForm";
-import WrappComponent from "./WrappComponent";
 
+import "./index.scss";
+import WrappComponent from "../WrappComponent";
 import UserSuggestionMain from "../../containers/UserSuggestion";
+import Modal from "../Modal";
+import TodoWrapper from "../Todo";
+import CardInputWrapper from "../CardInput";
+import Header from "../Header";
 
 export default class App extends Component {
     render() {
         return (
             <React.Fragment>
-                <header />
-                <div className={classnames(`container m-t-20`)}>
-                    <UserSuggestionMain />
+                {/* <Header /> */}
 
-                    {/* <ContactForm onSubmit={e => this.handleSubmit(e)} /> */}
-                    {/* <WrappComponent /> */}
-                </div>
+                <main className="container">
+                    <UserSuggestionMain />
+                    {/* <TodoWrapper /> */}
+                </main>
                 <footer />
             </React.Fragment>
         );

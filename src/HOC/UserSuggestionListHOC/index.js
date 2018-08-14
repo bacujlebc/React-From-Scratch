@@ -19,7 +19,7 @@ const UserSuggestionListHOC = WrappedComponent => {
                 (this.props.articles && this.props.articles.length > 0) ? (
                 <WrappedComponent {...this.props} />
             ) : (
-                <div class="lds-roller">
+                <div className="lds-roller">
                     <div />
                     <div />
                     <div />

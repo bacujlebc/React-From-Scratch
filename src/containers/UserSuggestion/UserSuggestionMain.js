@@ -1,9 +1,20 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import UserSuggestionList from "./UserSuggestionList";
-import { getArticles } from "../../actions/articles";
+import {
+    getArticles,
+    addArticle,
+    deleteArticle,
+    approveNewTitle,
+    like
+} from "../../actions/articles";
 import { connect } from "react-redux";
 
 class UserSuggestionMain extends Component {
+    static propTypes = {
+        fetchArticles: PropTypes.func.isRequired
+    };
+
     componentDidMount() {
         setTimeout(_ => {
             this.props.fetchArticles();
@@ -13,7 +24,15 @@ class UserSuggestionMain extends Component {
     render() {
         const { articles } = this.props;
 
-        return <UserSuggestionList articleList={articles || []} />;
+        return (
+            <UserSuggestionList
+                articleList={articles || []}
+                addArticle={this.props.addArticle}
+                deleteArticle={this.props.deleteArticle}
+                approveNewTitle={this.props.approveNewTitle}
+                likeArticle={this.props.likeArticle}
+            />
+        );
     }
 }
 
@@ -29,7 +48,7 @@ const mapDispatchToProps = dispatch => {
 
         approveNewTitle: title => dispatch(approveNewTitle(title)),
 
-        like: id => dispatch(like(id))
+        likeArticle: id => dispatch(like(id))
     };
 };
 

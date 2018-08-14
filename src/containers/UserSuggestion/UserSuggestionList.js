@@ -1,10 +1,25 @@
+import PropTypes from "prop-types";
 import React, { Component } from "react";
-import classnames from "classnames";
-
 import UserSuggestionItem from "./UserSuggestionItem";
 import UserSuggestionListHOC from "../../HOC/UserSuggestionListHOC";
 
 class UserSuggestionList extends Component {
+    static propTypes = {
+        articleList: PropTypes.arrayOf(
+            PropTypes.shape({
+                id: PropTypes.number,
+                originalText: PropTypes.string,
+                suggestions: PropTypes.array,
+                isApproved: PropTypes.bool,
+                likes: PropTypes.number
+            })
+        ),
+        addArticle: PropTypes.func.isRequired,
+        deleteArticle: PropTypes.func.isRequired,
+        approveNewTitle: PropTypes.func.isRequired,
+        likeArticle: PropTypes.func.isRequired
+    };
+
     constructor(props) {
         super(props);
         this.state = {};
@@ -17,36 +32,35 @@ class UserSuggestionList extends Component {
     };
 
     render() {
-        const { articleList } = this.props;
+        const {
+            articleList,
+            addArticle,
+            deleteArticle,
+            approveNewTitle,
+            likeArticle
+        } = this.props;
+
         return (
-            <div
-                className={classnames(
-                    "d-flex flex-column justify-content-center"
-                )}
-            >
+            <div className="d-flex flex-column justify-content-center">
                 {articleList.length > 0 &&
-                    articleList.map((el, i) => (
+                    articleList.map(el => (
                         <UserSuggestionItem
-                            originalText={this.state[el.id] || el.originalText}
                             key={el.id}
-                            removeHandler={_ => this.props.deleteArticle(i)}
-                            approveNewTitle={e => console.log(title)}
+                            likeArticle={likeArticle}
+                            removeHandler={deleteArticle}
+                            approveNewTitle={approveNewTitle}
                             handleChange={data =>
                                 this.onHandleChange(el.id, data)
                             }
-                            like={_ => this.props.like(el.id)}
+                            element={el}
                             likes={el.likes}
+                            originalText={this.state[el.id] || el.originalText}
                         />
                     ))}
 
-                <div className="">
-                    <button
-                        className="btn btn-success"
-                        onClick={_ => this.props.addArticle()}
-                    >
-                        Add article
-                    </button>
-                </div>
+                <button className="btn btn-success" onClick={addArticle}>
+                    Add article
+                </button>
             </div>
         );
     }

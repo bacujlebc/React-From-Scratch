@@ -1,20 +1,22 @@
-const path = require('path');
-const HtmlWebPackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require("path");
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const htmlWebpackPlugin = new HtmlWebPackPlugin({
-    template: "./src/index.html",
+    template: "./public/index.html",
     filename: "./index.html"
 });
-const extractTextPlugin = new ExtractTextPlugin({ filename: 'styles.css', allChunks: true, disable: process.env.NODE_ENV !== 'production' })
-
-
+const extractTextPlugin = new ExtractTextPlugin({
+    filename: "styles.css",
+    allChunks: true,
+    disable: process.env.NODE_ENV !== "production"
+});
 
 module.exports = {
     entry: "./src/index.js",
     output: {
-        path: path.resolve('dist'),
-        filename: 'main.js'
+        path: path.resolve("dist"),
+        filename: "main.js"
     },
     module: {
         rules: [
@@ -29,27 +31,29 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: [
-                    "style-loader", // creates style nodes from JS strings
-                    "css-loader", // translates CSS into CommonJS
-                    "sass-loader" // compiles Sass to CSS
-                ]
-            },
-            {
-                test: /\.css$/,
-                use: [
-                    { loader: 'style-loader' },
                     {
-                        loader: 'css-loader',
+                        loader: "style-loader"
+                    },
+                    {
+                        loader: "css-loader"
+                    },
+                    {
+                        loader: "postcss-loader",
                         options: {
-                            modules: true
+                            plugins: function() {
+                                return [
+                                    require("precss"),
+                                    require("autoprefixer")
+                                ];
+                            }
                         }
+                    },
+                    {
+                        loader: "sass-loader"
                     }
                 ]
             }
         ]
     },
-    plugins: [
-        htmlWebpackPlugin,
-        extractTextPlugin
-    ]
+    plugins: [htmlWebpackPlugin, extractTextPlugin]
 };

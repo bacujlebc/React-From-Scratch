@@ -7,7 +7,10 @@ import "./UserSuggestionItem.scss";
 import UserSuggestionInput from "./UserSuggestionInput";
 
 const UserSuggestionItem = props => {
+    console.log(props);
+    debugger;
     let numberOfLikes = props.likes ? `${props.likes} likes` : null;
+    const { removeHandler, likeArticle, originalText, element } = props;
 
     return (
         <div className={classnames(`card m-b-10`)}>
@@ -19,19 +22,22 @@ const UserSuggestionItem = props => {
                     <button
                         type="button"
                         className={classnames(`btn btn-danger`)}
-                        onClick={props.removeHandler}
+                        onClick={removeHandler}
                     >
                         Remove
                     </button>
                 </div>
 
-                <p className={classnames(`card-text`)}>{props.originalText}</p>
+                <p className={classnames(`card-text`)}>{originalText}</p>
                 <h6 className={classnames(`card-title mb-2 text-muted`)}>
                     Users version
                 </h6>
                 <UserSuggestionInput {...props} />
                 <div className="d-flex align-items-center justify-content-between">
-                    <i className="fas fa-heart" onClick={props.like}>
+                    <i
+                        className="fas fa-heart"
+                        onClick={_ => likeArticle(element.id)}
+                    >
                         {numberOfLikes}
                     </i>
 
@@ -40,7 +46,6 @@ const UserSuggestionItem = props => {
                         className={classnames(
                             `btn btn-primary float-right m-t-20`
                         )}
-                        onClick={e => props.approveNewTitle(e.target.value)}
                     >
                         Send
                     </button>
