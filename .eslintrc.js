@@ -30,5 +30,13 @@
 // };
 
 module.exports = {
-    parser: "babel-eslint"
+    extends: "react-app",
+    parser: "babel-eslint",
+    rules: {
+        indent: "off"
+    }
 };
+
+// module.exports = {
+//     parser: "babel-eslint"
+// };

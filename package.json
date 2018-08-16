@@ -4,10 +4,9 @@
     "description": "",
     "main": "index.js",
     "lint-staged": {
-        "src/**/*.{js,jsx,json,css, scss}": [
-            "prettier --single-quote --write",
-            "git add"
-        ]
+        "*.js": "eslint",
+        "*.css": "stylelint",
+        "*.scss": "stylelint"
     },
     "scripts": {
         "precommit": "lint-staged",
@@ -17,7 +16,8 @@
         "build": "npm-run-all build-css build-js",
         "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
         "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
-        "flow": "flow"
+        "flow": "flow",
+        "eslint": "eslint *.js"
     },
     "keywords": [],
     "author": "Skalozub",
