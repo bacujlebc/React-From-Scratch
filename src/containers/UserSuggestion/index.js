@@ -1,3 +1,3 @@
-import UserSuggestionMain from "./UserSuggestionMain";
+import UserSuggestionMain from './UserSuggestionMain';
 
 export default UserSuggestionMain;

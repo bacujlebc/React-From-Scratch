@@ -1,17 +1,17 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 let todoList = [
-    { id: 1, title: "Todo text 1", done: false },
-    { id: 2, title: "Todo text 2", done: false },
-    { id: 3, title: "Todo text 3", done: false },
-    { id: 4, title: "Todo text 4", done: false },
-    { id: 5, title: "Todo text 5", done: false },
-    { id: 6, title: "Todo text 6", done: false },
-    { id: 7, title: "Todo text 7", done: false },
-    { id: 8, title: "Todo text 8", done: false },
-    { id: 9, title: "Todo text 9", done: false },
-    { id: 10, title: "Todo text 10", done: false },
-    { id: 11, title: "Todo text 11", done: false }
+    { id: 1, title: 'Todo text 1', done: false },
+    { id: 2, title: 'Todo text 2', done: false },
+    { id: 3, title: 'Todo text 3', done: false },
+    { id: 4, title: 'Todo text 4', done: false },
+    { id: 5, title: 'Todo text 5', done: false },
+    { id: 6, title: 'Todo text 6', done: false },
+    { id: 7, title: 'Todo text 7', done: false },
+    { id: 8, title: 'Todo text 8', done: false },
+    { id: 9, title: 'Todo text 9', done: false },
+    { id: 10, title: 'Todo text 10', done: false },
+    { id: 11, title: 'Todo text 11', done: false }
 ];
 
 let TodoList = props => {
@@ -38,7 +38,7 @@ let SearchBar = props => {
 
 export default class TodoWrapper extends Component {
     state = {
-        value: ""
+        value: ''
     };
 
     componentWillMount() {

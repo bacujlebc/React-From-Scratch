@@ -1,5 +1,5 @@
-import React, { PureComponent, Fragment } from "react";
-import "./styles.scss";
+import React, { PureComponent, Fragment } from 'react';
+import './styles.scss';
 
 export const UserItem = props => {
     return (

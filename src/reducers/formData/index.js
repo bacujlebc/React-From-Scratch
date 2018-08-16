@@ -1,4 +1,4 @@
-import { LOAD_FORM_DATA } from "../../actions/formData";
+import { LOAD_FORM_DATA } from '../../actions/formData';
 
 const formData = (state = {}, action) => {
     switch (action.type) {

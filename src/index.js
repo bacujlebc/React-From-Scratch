@@ -1,32 +1,27 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
-import { Router, Route } from "react-router-dom";
-import { createStore, applyMiddleware } from "redux";
-import { routerMiddleware } from "react-router-redux";
-import { logger } from "redux-logger";
-import history from "./history";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { Router, Route, Switch } from 'react-router-dom';
 
-import rootReducer from "./reducers/index";
-import App from "./components/App";
-import Login from "./components/Login";
+import store from './utils/configure-store';
+import history from './utils/configure-history';
+import registerServiceWorker from './utils/registerServiceWorker';
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(
-    rootReducer,
-    composeEnhancers(applyMiddleware(routerMiddleware(history), logger))
-);
-// const history = syncHistoryWithStore(createBrowserHistory(), store);
+import App from './components/App';
+import Login from './components/Login';
+import NoMatch from './components/NoMatch';
 
 const Component = () => (
     <Provider store={store}>
         <Router history={history}>
-            <React.Fragment>
+            <Switch>
                 <Route exact path="/" component={App} />
                 <Route exact path="/login" component={Login} />
-            </React.Fragment>
+                <Route component={NoMatch} />
+            </Switch>
         </Router>
     </Provider>
 );
 
-ReactDOM.render(<Component />, document.getElementById("root"));
+ReactDOM.render(<Component />, document.getElementById('root'));
+registerServiceWorker();

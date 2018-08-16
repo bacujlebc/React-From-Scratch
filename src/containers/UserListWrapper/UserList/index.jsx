@@ -1,6 +1,6 @@
-import React, { PureComponent, Fragment } from "react";
-import { UserItem } from "../UserItem";
-import "./styles.scss";
+import React, { PureComponent, Fragment } from 'react';
+import { UserItem } from '../UserItem';
+import './styles.scss';
 
 export const UserList = props => {
     return (

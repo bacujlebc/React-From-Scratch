@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import "./index.scss";
+import React, { Component } from 'react';
+import './index.scss';
 
 const UserSuggestionListHOC = WrappedComponent => {
     return class extends Component {
@@ -8,7 +8,8 @@ const UserSuggestionListHOC = WrappedComponent => {
         };
 
         componentWillReceiveProps(nextProps) {
-            nextProps.articleList.length > 0 &&
+            debugger;
+            nextProps.articles.length > 0 &&
                 this.setState({
                     isDataReceived: !this.setState.isDataReceived
                 });

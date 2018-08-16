@@ -1,18 +1,18 @@
-import React from "react";
-import ContactForm from "../ContactForm";
+import React from 'react';
+import ContactForm from '../ContactForm';
 
 const data = {
     // used to populate "account" reducer when "Load" is clicked
-    firstName: "Jane",
-    lastName: "Doe",
-    age: "42",
-    sex: "female",
-    email: "bacujlui@gmail.com",
+    firstName: 'Jane',
+    lastName: 'Doe',
+    age: '42',
+    sex: 'female',
+    email: 'bacujlui@gmail.com',
     employed: true,
-    favoriteColor: "Blue",
-    bio: "Born to write amazing Redux code."
+    favoriteColor: 'Blue',
+    bio: 'Born to write amazing Redux code.'
 };
-const colors = ["Red", "Orange", "Yellow", "Green", "Blue", "Indigo", "Violet"];
+const colors = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Indigo', 'Violet'];
 
 class WrappComponent extends React.Component {
     render() {

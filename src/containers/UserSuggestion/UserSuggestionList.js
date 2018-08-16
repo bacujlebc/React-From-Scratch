@@ -1,11 +1,12 @@
-import PropTypes from "prop-types";
-import React, { Component } from "react";
-import UserSuggestionItem from "./UserSuggestionItem";
-import UserSuggestionListHOC from "../../HOC/UserSuggestionListHOC";
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import UserSuggestionItem from './UserSuggestionItem';
+import UserSuggestionListHOC from '../../HOC/UserSuggestionListHOC';
+import './UserSuggestionList.scss';
 
 class UserSuggestionList extends Component {
     static propTypes = {
-        articleList: PropTypes.arrayOf(
+        articles: PropTypes.arrayOf(
             PropTypes.shape({
                 id: PropTypes.number,
                 originalText: PropTypes.string,
@@ -17,7 +18,8 @@ class UserSuggestionList extends Component {
         addArticle: PropTypes.func.isRequired,
         deleteArticle: PropTypes.func.isRequired,
         approveNewTitle: PropTypes.func.isRequired,
-        likeArticle: PropTypes.func.isRequired
+        likeArticle: PropTypes.func.isRequired,
+        match: PropTypes.any
     };
 
     constructor(props) {
@@ -32,35 +34,31 @@ class UserSuggestionList extends Component {
     };
 
     render() {
-        const {
-            articleList,
-            addArticle,
-            deleteArticle,
-            approveNewTitle,
-            likeArticle
-        } = this.props;
+        let { articles, addArticle } = this.props;
+        // !articleList.length && (articleList = []);
 
         return (
             <div className="d-flex flex-column justify-content-center">
-                {articleList.length > 0 &&
-                    articleList.map(el => (
+                <button
+                    className="btn btn-success add-article"
+                    onClick={addArticle}
+                >
+                    Add article
+                </button>
+
+                {articles.length > 0 &&
+                    articles.map(el => (
                         <UserSuggestionItem
                             key={el.id}
-                            likeArticle={likeArticle}
-                            removeHandler={deleteArticle}
-                            approveNewTitle={approveNewTitle}
                             handleChange={data =>
                                 this.onHandleChange(el.id, data)
                             }
                             element={el}
                             likes={el.likes}
                             originalText={this.state[el.id] || el.originalText}
+                            {...this.props}
                         />
                     ))}
-
-                <button className="btn btn-success" onClick={addArticle}>
-                    Add article
-                </button>
             </div>
         );
     }

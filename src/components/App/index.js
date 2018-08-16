@@ -1,15 +1,14 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { push } from "react-router-redux";
-import { isEmpty } from "../../utils";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 
-import UserSuggestionMain from "../../containers/UserSuggestion";
-import TodoWrapper from "../Todo";
-import Header from "../Header";
+import UserSuggestionMain from '../../containers/UserSuggestion';
+import TodoWrapper from '../Todo';
+import Header from '../Header';
 
-import { logout } from "../../actions/auth";
+import { logout } from '../../actions/auth';
 
-import "./index.scss";
+import './index.scss';
 
 class App extends Component {
     render() {
@@ -22,7 +21,7 @@ class App extends Component {
 
                 <div className="container">
                     {/* <TodoWrapper /> */}
-                    <UserSuggestionMain />
+                    <UserSuggestionMain {...this.props} />
                 </div>
             </React.Fragment>
         ) : (
@@ -49,13 +48,13 @@ export default connect(
         return {
             state: state,
             loggedInAs: state.auth.username,
-            isAuthenticated: !isEmpty(state.auth)
+            isAuthenticated: localStorage.getItem('username')
         };
     },
 
     dispatch => {
         return {
-            redirect: _ => dispatch(push("/login")),
+            redirect: _ => dispatch(push('/login')),
             logout: _ => dispatch(logout())
         };
     }

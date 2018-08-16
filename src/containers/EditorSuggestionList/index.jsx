@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import classnames from "classnames";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import classnames from 'classnames';
+import { connect } from 'react-redux';
 
-import { fetchArticles } from "../../api/article-service";
-import "./styles.scss";
-import EditorSuggestion from "../../components/EditorSuggestion";
+import { fetchArticles } from '../../api/article-service';
+import './styles.scss';
+import EditorSuggestion from '../../components/EditorSuggestion';
 
 class EditorSuggestionList extends Component {
     componentDidMount() {

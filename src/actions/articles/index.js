@@ -1,8 +1,8 @@
-export const GET_ARTICLES = "GET_ARTICLES";
-export const ADD_ARTICLE = "ADD_ARTICLE";
-export const DELETE_ARTICLE = "DELETE_ARTICLE";
+export const GET_ARTICLES = 'GET_ARTICLES';
+export const ADD_ARTICLE = 'ADD_ARTICLE';
+export const DELETE_ARTICLE = 'DELETE_ARTICLE';
 
-export const ADD_LIKE = "ADD_LIKE";
+export const ADD_LIKE = 'ADD_LIKE';
 
 export function getArticles() {
     return {

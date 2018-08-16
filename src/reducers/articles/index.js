@@ -3,9 +3,9 @@ import {
     ADD_ARTICLE,
     DELETE_ARTICLE,
     ADD_LIKE
-} from "../../actions/articles";
+} from '../../actions/articles';
 
-import { articleData } from "../../data/article-json";
+import { articleData } from '../../data/article-json';
 
 const articles = (state = [], action) => {
     switch (action.type) {
@@ -19,7 +19,7 @@ const articles = (state = [], action) => {
                         state.length > 0
                             ? Math.max(...state.map(el => el.id)) + 1
                             : 1,
-                    originalText: "Test article.",
+                    originalText: 'Test article.',
                     suggestions: [],
                     isApproved: false,
                     likes: 0

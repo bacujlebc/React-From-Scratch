@@ -1,11 +1,11 @@
-import React from "react";
-import { connect } from "react-redux";
-import { Field, reduxForm } from "redux-form";
-import { loadData } from "../../actions/formData";
+import React from 'react';
+import { connect } from 'react-redux';
+import { Field, reduxForm } from 'redux-form';
+import { loadData } from '../../actions/formData';
 
-import submit from "./submit";
+import submit from './submit';
 
-import "./styles.scss";
+import './styles.scss';
 
 const renderField = ({ input, label, type, meta: { touched, error } }) => (
     <div>
@@ -22,6 +22,7 @@ let ContactForm = props => {
     return (
         <div className="login-page">
             <div className="form">
+                <h3>Sign in</h3>
                 <form className="login-form" onSubmit={handleSubmit(submit)}>
                     <Field
                         name="username"
@@ -39,6 +40,11 @@ let ContactForm = props => {
                         label="Password"
                     />
                     {error && <strong>{error}</strong>}
+
+                    {/* <div>
+                        <a href="">Forgot password</a>
+                    </div> */}
+
                     <div>
                         <button type="submit" disabled={submitting}>
                             Sign in
@@ -51,7 +57,7 @@ let ContactForm = props => {
 };
 
 ContactForm = reduxForm({
-    form: "contactForm"
+    form: 'contactForm'
     // enableReinitialize: true
 })(ContactForm);
 

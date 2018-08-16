@@ -1,4 +1,4 @@
-export const LOAD_FORM_DATA = "LOAD_FORM_DATA";
+export const LOAD_FORM_DATA = 'LOAD_FORM_DATA';
 
 export function loadData(data) {
     return {

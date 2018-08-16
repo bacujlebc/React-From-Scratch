@@ -1,8 +1,8 @@
-import React, { Component, Fragment } from "react";
-import { connect } from "react-redux";
+import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
 
-import { participants } from "../../data/participant-json";
-import { UserList } from "./UserList/index";
+import { participants } from '../../data/participant-json';
+import { UserList } from './UserList/index';
 
 class UserListWrapper extends Component {
     state = {

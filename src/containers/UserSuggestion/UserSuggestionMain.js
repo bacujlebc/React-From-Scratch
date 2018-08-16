@@ -1,18 +1,22 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import UserSuggestionList from "./UserSuggestionList";
+import React, { Component } from 'react';
+import { push } from 'react-router-redux';
+import { Router, Route, Switch } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import UserSuggestionList from './UserSuggestionList';
+import Topic from './Topic';
 import {
     getArticles,
     addArticle,
     deleteArticle,
     approveNewTitle,
     like
-} from "../../actions/articles";
-import { connect } from "react-redux";
+} from '../../actions/articles';
+import { connect } from 'react-redux';
 
 class UserSuggestionMain extends Component {
     static propTypes = {
-        fetchArticles: PropTypes.func.isRequired
+        fetchArticles: PropTypes.func.isRequired,
+        match: PropTypes.any
     };
 
     componentDidMount() {
@@ -22,16 +26,16 @@ class UserSuggestionMain extends Component {
     }
 
     render() {
-        const { articles } = this.props;
-
+        console.log(this.props.match.url);
         return (
-            <UserSuggestionList
-                articleList={articles || []}
-                addArticle={this.props.addArticle}
-                deleteArticle={this.props.deleteArticle}
-                approveNewTitle={this.props.approveNewTitle}
-                likeArticle={this.props.likeArticle}
-            />
+            <React.Fragment>
+                <UserSuggestionList {...this.props} />
+
+                <Route
+                    path={`${this.props.match.url}/:topicId`}
+                    component={Topic}
+                />
+            </React.Fragment>
         );
     }
 }
@@ -48,7 +52,9 @@ const mapDispatchToProps = dispatch => {
 
         approveNewTitle: title => dispatch(approveNewTitle(title)),
 
-        likeArticle: id => dispatch(like(id))
+        likeArticle: id => dispatch(like(id)),
+
+        openArticle: id => dispatch(push(`/${id}`))
     };
 };
 

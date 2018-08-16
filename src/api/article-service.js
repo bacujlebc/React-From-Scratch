@@ -1,5 +1,5 @@
-import { getArticles } from "../actions/articles";
-import { articles } from "../data/article-json";
+import { getArticles } from '../actions/articles';
+import { articles } from '../data/article-json';
 
 export const fetchArticles = _ => {
     return dispatch => {
@@ -15,7 +15,7 @@ export const fetchArticleById = articleId => {
             .then(result =>
                 resolve({
                     originalText:
-                        "It was amazing way. Sun was shining brightly.",
+                        'It was amazing way. Sun was shining brightly.',
                     suggestions: []
                 })
             )

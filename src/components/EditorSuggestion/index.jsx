@@ -1,17 +1,17 @@
-import React, { Component, Fragment } from "react";
-import classnames from "classnames";
-import { connect } from "react-redux";
+import React, { Component, Fragment } from 'react';
+import classnames from 'classnames';
+import { connect } from 'react-redux';
 
-import UserSuggestionInput from "../UserSuggestion/UserSuggestionInput";
-import { sendArticleSuggestion } from "../../actions/articles";
-import "../../helpers.scss";
-import "./styles.scss";
+import UserSuggestionInput from '../UserSuggestion/UserSuggestionInput';
+import { sendArticleSuggestion } from '../../actions/articles';
+import '../../helpers.scss';
+import './styles.scss';
 
 class EditorSuggestion extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            inputValue: "",
+            inputValue: '',
             isTextArea: false
         };
     }
@@ -25,7 +25,7 @@ class EditorSuggestion extends Component {
     sendSuggestion = () => {
         const data = { id: this.props.id, text: this.state.inputValue };
         this.props.saveSuggestion(data);
-        this.setState({ inputValue: "" });
+        this.setState({ inputValue: '' });
     };
 
     render() {

@@ -1,5 +1,5 @@
-import React, { Component, PureComponent } from "react";
-import classnames from "classnames";
+import React, { Component, PureComponent } from 'react';
+import classnames from 'classnames';
 
 export default class UserSuggestionInput extends PureComponent {
     handleChange = e => {
