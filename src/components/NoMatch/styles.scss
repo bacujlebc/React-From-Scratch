@@ -1,19 +1,19 @@
-@import "../../helpers.scss";
+@import '../../helpers.scss';
 
 .page-not-found-wrapper {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    align-items: center;
-    justify-content: center;
-    height: 100%;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 
-    p {
-        font-size: 12rem;
-    }
+  p {
+    font-size: 12rem;
+  }
 
-    p,
-    a {
-        color: $purple-color;
-    }
+  p,
+  a {
+    color: $purple-color;
+  }
 }

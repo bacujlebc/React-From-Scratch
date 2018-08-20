@@ -1,88 +1,83 @@
-// @import "../../helpers.scss";
-
 .root {
-    margin-top: 40px;
+  margin-top: 40px;
 }
 
 header {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  margin: 0;
+  padding: 0;
+
+  height: 40px;
+  width: 100%;
+
+  background-color: white;
+  box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.42);
+
+  div:first-child {
+    height: inherit;
     display: flex;
-    position: fixed;
-    top: 0;
-    left: 0;
+    flex-direction: row;
+    justify-content: center;
 
-    margin: 0;
-    padding: 0;
+    ul {
+      display: flex;
+      flex-direction: row;
 
-    height: 40px;
-    width: 100%;
+      justify-content: center;
+      align-items: center;
 
-    background-color: white;
+      height: 100%;
+      list-style: none;
 
-    -webkit-box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.42);
-    -moz-box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.42);
-    box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.42);
+      li {
+        margin: 0 10px;
 
-    div:first-child {
-        height: inherit;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-
-        ul {
-            display: flex;
-            flex-direction: row;
-
-            justify-content: center;
-            align-items: center;
-
-            height: 100%;
-            list-style: none;
-
-            li {
-                margin: 0 10px;
-
-                .logout {
-                    right: 20px;
-                    position: absolute;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    transition: 0.3;
-                    cursor: pointer;
-                }
-
-                .logout:hover {
-                    color: #007bff;
-                }
-
-                a {
-                    text-decoration: none;
-                }
-            }
-
-            li:last-child {
-                float: right;
-            }
+        .logout {
+          right: 20px;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          transition: 0.3;
+          cursor: pointer;
         }
+
+        .logout:hover {
+          color: #007bff;
+        }
+
+        a {
+          text-decoration: none;
+        }
+      }
+
+      li:last-child {
+        float: right;
+      }
     }
+  }
 }
 
 .container {
-    position: inherit !important;
+  position: inherit !important;
 
-    margin-top: 60px;
+  margin-top: 60px;
 }
 
 .not-authorized {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    align-items: center;
-    justify-content: center;
+  align-items: center;
+  justify-content: center;
 
-    padding: 50px;
-    height: 100%;
+  padding: 50px;
+  height: 100%;
 }
 
 body {
-    background-color: #eeeeee !important;
+  background-color: #eee !important;
 }

@@ -1,56 +1,56 @@
-@import "../../helpers.scss";
+@import '../../helpers.scss';
 
 .card {
-    display: flex;
-    flex-direction: row !important;
-    align-self: center;
+  display: flex;
+  flex-direction: row !important;
+  align-self: center;
 
-    max-height: 250px;
-    margin-bottom: 40px;
-    max-width: 90vh;
-    padding: 12px;
-    border: none !important;
-    box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.125);
+  max-height: 250px;
+  margin-bottom: 40px;
+  max-width: 90vh;
+  padding: 12px;
+  border: none !important;
+  box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.125);
 
-    position: inherit !important;
+  position: inherit !important;
 
-    .card-body {
-        padding: 1.25rem 1.25rem 0 1.25rem;
+  .card-body {
+    padding: 1.25rem 1.25rem 0 1.25rem;
 
-        .card-subtitle {
-            font-size: 12px;
-            color: #b7a5d8;
-        }
-
-        .card-title {
-            color: #673bb6;
-        }
-
-        .card-text {
-            margin-top: 15px;
-        }
+    .card-subtitle {
+      font-size: 12px;
+      color: #b7a5d8;
     }
 
-    img {
-        max-width: 280px;
+    .card-title {
+      color: #673bb6;
     }
 
-    img.card-img-top {
-        border-top-right-radius: none;
-        border-bottom-left-radius: calc(0.25rem - 1px);
+    .card-text {
+      margin-top: 15px;
     }
+  }
+
+  img {
+    max-width: 280px;
+  }
+
+  img.card-img-top {
+    border-top-right-radius: none;
+    border-bottom-left-radius: calc(0.25rem - 1px);
+  }
 }
 
 .btn {
-    color: $white-color;
-    height: 40px;
-    background-color: $purple-color;
+  color: $white-color;
+  height: 40px;
+  background-color: $purple-color;
 }
 
 .editor-input {
-    height: 40px;
+  height: 40px;
 }
 
 .fa-heart.liked {
-    color: #673bb6;
+  color: #673bb6;
 }

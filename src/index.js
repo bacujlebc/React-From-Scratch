@@ -12,15 +12,15 @@ import Login from './components/Login';
 import NoMatch from './components/NoMatch';
 
 const Component = () => (
-    <Provider store={store}>
-        <Router history={history}>
-            <Switch>
-                <Route exact path="/" component={App} />
-                <Route exact path="/login" component={Login} />
-                <Route component={NoMatch} />
-            </Switch>
-        </Router>
-    </Provider>
+  <Provider store={store}>
+    <Router history={history}>
+      <Switch>
+        <Route exact path="/" component={App} />
+        <Route exact path="/login" component={Login} />
+        <Route component={NoMatch} />
+      </Switch>
+    </Router>
+  </Provider>
 );
 
 ReactDOM.render(<Component />, document.getElementById('root'));
