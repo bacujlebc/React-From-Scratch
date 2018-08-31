@@ -1,28 +1,22 @@
-import React, { PureComponent } from 'react';
-import { connect } from 'react-redux';
-import { push } from 'react-router-redux';
+import React from 'react';
 import './styles.scss';
+import { Link } from 'react-router-dom';
+import Button from '../Button/index';
 
-class NoMatch extends PureComponent {
-  render() {
-    const { toLoginPage } = this.props;
-    return (
-      <div className="page-not-found-wrapper">
-        <p>404</p>
-        <hr />
-        <h3>
-          Please, follow{' '}
-          <button type="button" onClick={toLoginPage}>
-            this
-          </button>{' '}
-          link
-        </h3>
-      </div>
-    );
-  }
-}
+const NoMatch = props => {
+	return (
+		<div className="page-not-found-wrapper">
+			<p>404</p>
+			<hr />
+			<h3>
+				Please, follow{' '}
+				<Button className="btn btn-warning">
+					<Link to="/login">this</Link>
+				</Button>{' '}
+				link
+			</h3>
+		</div>
+	);
+};
 
-export default connect(
-  state => state,
-  { toLoginPage: () => push('/login') }
-)(NoMatch);
+export default NoMatch;

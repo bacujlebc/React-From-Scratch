@@ -5,27 +5,27 @@ export const DELETE_ARTICLE = 'DELETE_ARTICLE';
 export const ADD_LIKE = 'ADD_LIKE';
 
 export function getArticles() {
-  return {
-    type: GET_ARTICLES
-  };
+	return {
+		type: GET_ARTICLES
+	};
 }
 
 export function addArticle() {
-  return {
-    type: ADD_ARTICLE
-  };
+	return {
+		type: ADD_ARTICLE
+	};
 }
 
 export function deleteArticle(id) {
-  return {
-    type: DELETE_ARTICLE,
-    id
-  };
+	return {
+		type: DELETE_ARTICLE,
+		id
+	};
 }
 
 export function like(id) {
-  return {
-    type: ADD_LIKE,
-    id
-  };
+	return {
+		type: ADD_LIKE,
+		id
+	};
 }

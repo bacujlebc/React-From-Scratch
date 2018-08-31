@@ -7,10 +7,10 @@ import formData from './formData';
 import auth from './auth';
 
 const rootReducer = combineReducers({
-  form: formReducer,
-  routing: routerReducer,
-  articles,
-  formData,
-  auth
+	form: formReducer,
+	routing: routerReducer,
+	articles,
+	formData,
+	auth
 });
 export default rootReducer;

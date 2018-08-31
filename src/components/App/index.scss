@@ -3,7 +3,6 @@
 }
 
 header {
-  display: flex;
   position: fixed;
   top: 0;
   left: 0;
@@ -11,52 +10,45 @@ header {
   margin: 0;
   padding: 0;
 
-  height: 40px;
   width: 100%;
 
   background-color: white;
   box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.42);
 
-  div:first-child {
-    height: inherit;
+  ul.header-list {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
 
-    ul {
-      display: flex;
-      flex-direction: row;
+    margin: 0;
+    padding: 0;
 
-      justify-content: center;
-      align-items: center;
+    list-style: none;
 
-      height: 100%;
-      list-style: none;
+    &-item {
+      margin: 0 10px;
 
-      li {
-        margin: 0 10px;
-
-        .logout {
-          right: 20px;
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-          transition: 0.3;
-          cursor: pointer;
-        }
-
-        .logout:hover {
-          color: #007bff;
-        }
-
-        a {
-          text-decoration: none;
-        }
+      .logout {
+        right: 20px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: 0.3;
+        cursor: pointer;
       }
 
-      li:last-child {
-        float: right;
+      .logout:hover {
+        color: #007bff;
       }
+
+      a {
+        text-decoration: none;
+      }
+    }
+
+    li:last-child {
+      float: right;
     }
   }
 }
@@ -76,8 +68,4 @@ header {
 
   padding: 50px;
   height: 100%;
-}
-
-body {
-  background-color: #eee !important;
 }

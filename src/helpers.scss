@@ -1,16 +1,24 @@
-@import 'node_modules/bootstrap/scss/bootstrap';
+@import "node_modules/bootstrap/scss/bootstrap";
 
-$purple-color: #673bb6;
+$purple-color: #6200ee;
 $white-color: #fff;
+$black-color: #000;
 
 a {
-  text-decoration: none;
+  color: $black-color !important;
+  text-decoration: none !important;
 }
 
 html,
 body,
 #root {
   height: 100%;
+  font-family: Roboto, sans-serif;
+  font-size: 14px;
+
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
 #root *,
@@ -21,8 +29,22 @@ body,
   -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+  background-color: #eee !important;
+}
+
 a:hover,
 a:active,
 a:focus {
   outline: 0;
+}
+
+header {
+  z-index: 1100;
+}
+
+// Margin-helpers
+
+.m-b-10 {
+  margin-bottom: 10px !important;
 }

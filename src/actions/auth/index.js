@@ -4,26 +4,26 @@ export const AUTHORISATION_REQUEST_FAILED = 'AUTHORISATION_REQUEST_FAILED';
 export const LOGOUT_REQUEST = 'LOGOUT_REQUEST';
 
 export function loginStart() {
-  return {
-    type: AUTHORISATION_REQUEST
-  };
+	return {
+		type: AUTHORISATION_REQUEST
+	};
 }
 
 export function loginSuccess(data) {
-  return {
-    type: AUTHORISATION_REQUEST_SUCCESS,
-    data
-  };
+	return {
+		type: AUTHORISATION_REQUEST_SUCCESS,
+		data
+	};
 }
 
 export function loginFailed() {
-  return {
-    type: AUTHORISATION_REQUEST_FAILED
-  };
+	return {
+		type: AUTHORISATION_REQUEST_FAILED
+	};
 }
 
 export function logout() {
-  return {
-    type: LOGOUT_REQUEST
-  };
+	return {
+		type: LOGOUT_REQUEST
+	};
 }
